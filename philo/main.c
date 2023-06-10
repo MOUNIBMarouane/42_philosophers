@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/03 16:45:50 by mamounib          #+#    #+#             */
-/*   Updated: 2023/06/06 23:11:55 by mamounib         ###   ########.fr       */
+/*   Created: 2023/06/03 16:43:16 by mamounib          #+#    #+#             */
+/*   Updated: 2023/06/06 22:46:20 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
-# include <pthread.h>
-# include <stdlib.h>
+#include "main.h"
+#include <stdlib.h>
 
 
-typedef struct s_info
+int	main(int argc, char **argv)
 {
-	int	nbr_fork;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	time_to_think;
-	int	time_to_die;
-	int	times_eat;
-}	t_info;
-
-typedef struct s_philo	t_philo;
-
-struct s_philo
-{
-	int		n_philo;
+	t_philo philos;
 	t_info	info;
-	t_philo	*first;
-	t_philo	*last;
-	t_philo	*next;
-};
-
-#endif
+	
+	ft_init_info(argv, &info);
+	if (argc == 6)
+		info.times_eat = atoi(argv[5]);
+	ft_init_philos(&philos, info, atoi(argv[1]));
+	return (0);
+}
