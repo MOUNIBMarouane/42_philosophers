@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:45:50 by mamounib          #+#    #+#             */
-/*   Updated: 2023/06/11 15:58:58 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:16:56 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_info
 {
 	pthread_mutex_t	msg;
-	int				nbr_fork;
+	int				nbr_philo;	
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				time_to_die;
