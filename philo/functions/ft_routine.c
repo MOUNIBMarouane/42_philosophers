@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_routine.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: killwa <killwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 22:52:42 by mamounib          #+#    #+#             */
-/*   Updated: 2023/06/12 08:05:18 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:13:58 by killwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 // sleep 
 long	ft_get_time(struct timeval time)
 {
-
+	
 	return ((time.tv_sec / 1000) + (time.tv_usec * 1000));
 }
 
@@ -40,16 +40,14 @@ void	ft_eat(t_philo *philo)
 	time = ft_get_time(date);
 	pthread_mutex_lock(&philo->next->fork);
 	pthread_mutex_lock(&philo->fork);
-		printf("%ld %d has taken a fork", time, philo->n_philo);
-		printf("%ld %d has taken a fork", time, philo->n_philo);
-	
+	printf("%ld %d has taken a fork", time, philo->n_philo);
+	printf("%ld %d has taken a fork", time, philo->n_philo);
 	printf("%ld %d is eating", time, philo->n_philo);
 }
 
 void	ft_sleep(t_philo *philo)
 {
 	long	time;
-
 	time = 0;
 	printf("%ld %d is sleeping", time, philo->n_philo);
 }

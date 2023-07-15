@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: killwa <killwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:43:16 by mamounib          #+#    #+#             */
-/*   Updated: 2023/06/14 17:22:24 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/07/09 13:19:39 by killwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 {
 	t_philo philos;
 	t_info	info;
+
 	
 	return (0);
-} 
+}

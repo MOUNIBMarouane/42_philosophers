@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: killwa <killwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 23:13:39 by mamounib          #+#    #+#             */
-/*   Updated: 2023/06/14 12:47:17 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:21:48 by killwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 #include <pthread.h>
-#include <sys/_pthread/_pthread_mutex_t.h>
 
 t_philo	*ft_new_philo(t_info info)
 {
@@ -29,13 +28,17 @@ t_philo	*ft_new_philo(t_info info)
 
 void	ft_add_philo(t_philo *philos, t_philo *philo)
 {
-	if (!philos->n_philo)
+	if (!philos->first)
+	{
 		philos->first = philo;
+		philos->last = philo;
+	}
 	else
+	{
 		philos->last->next = philo;
-	philo->next = philos->first;
-	philos->last = philo;
-	philos->n_philo ++;
+		philos->last = philo;
+		philo->next = philos->first;
+	}
 }
 
 void	init_info(char **argv, t_info *info)
