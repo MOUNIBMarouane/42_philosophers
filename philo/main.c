@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: killwa <killwa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:43:16 by mamounib          #+#    #+#             */
-/*   Updated: 2023/07/09 13:19:39 by killwa           ###   ########.fr       */
+/*   Updated: 2023/07/22 11:44:54 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 #include <stdlib.h>
 
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_philo philos;
-	t_info	info;
-
+	t_info info;
 	
-	return (0);
+	if (argc == 5 || argc == 6)
+	{
+		ft_parce(argc, argv, &info);
+		get_info(info);
+	}
+	else
+		printf("error: syntax error: too many or less arguments");
+	return 0;
 }
