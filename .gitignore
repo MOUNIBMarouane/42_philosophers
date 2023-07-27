@@ -1,0 +1,5 @@
+philos
+a.out
+philo/philo
+philo/*.o
+philo/*/*.o

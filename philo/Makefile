@@ -1,15 +1,15 @@
 
 NAME = philo
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
+CC = cc -g
+CFLAGS = -fsanitize=thread
 RM = rm -f
 
-FILES= philo/main.c \
-	   philo/functions/ft_routine.c \
-	   philo/functions/ft_parce.c \
-	   philo/functions/ft_init.c \
-	   philo/help.c
+FILES= main.c \
+	   functions/ft_routine.c \
+	   functions/ft_parce.c \
+	   functions/ft_init.c \
+	   help.c
 
 OBJECT = ${FILES:.c=.o}
 
