@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: killwa <killwa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:45:50 by mamounib          #+#    #+#             */
-/*   Updated: 2023/07/20 16:29:43 by killwa           ###   ########.fr       */
+/*   Updated: 2023/07/27 10:11:41 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ struct s_philo
 	t_philo			*next;
 };
 
-t_philo	*ft_init_philos(t_philo *philos, int nbr);
+t_philo	*ft_init_philos(int nbr);
 void	ft_add_philo(t_philo *philos, t_philo *philo);
 t_philo	*ft_new_philo(void);
-void	ft_init_info(char **argv, t_info *info);
-int main(int argc, char **argv);
+t_info	*ft_init_info(int argc, char **argv);
 void	get_info(t_info info);
 long long	ft_get_time(void);
-void	ft_parce(int argc, char **argv, t_info *info);
+int	ft_parce(int argc, char **argv);
 #endif
