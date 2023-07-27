@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 12:10:28 by mamounib          #+#    #+#             */
-/*   Updated: 2023/07/25 17:43:01 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:56:47 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,19 @@ int	ft_parce(int argc, char **argv)
 	return (parce);
 }
 
+int	ft_check_info(t_info info, int argc)
+{
+	int	checker;
+
+	checker = 1;
+	if (info.nbr_philo <= 0 || info.time_to_die <= 0 \
+	|| info.time_to_eat <= 0 || info .time_to_sleep <= 0)
+		checker = 0;
+	if (argc == 6 && info.times_must_eat <= 0)
+		checker = 0;
+	return (checker);
+}
+
 t_info	*ft_init_info(int argc, char **argv)
 {
 	t_info	*info;
@@ -69,7 +82,8 @@ t_info	*ft_init_info(int argc, char **argv)
 			info->times_must_eat = atoi(argv[5]);
 		else
 			info->times_must_eat = -1;
-		return (info);
+		if (ft_check_info(*info, argc))
+			return (info);
 	}
 	return (NULL);
 }
