@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 12:10:28 by mamounib          #+#    #+#             */
-/*   Updated: 2023/07/27 10:56:47 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/07/29 17:44:49 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,10 @@ int	ft_parce(int argc, char **argv)
 	int parce;
 
 	parce = 0;
-	if (argc == 5 || argc == 6)
-	{
-		if (is_degit(argv[1]) && is_degit(argv[2]) && is_degit(argv[3]) && is_degit(argv[4]))
-			parce = 1;
-		if (argc == 6 && !is_degit(argv[5]))
-            parce = 0;
-	}
+	if (is_degit(argv[1]) && is_degit(argv[2]) && is_degit(argv[3]) && is_degit(argv[4]))
+		parce = 1;
+	if (argc == 6 && !is_degit(argv[5]))
+		parce = 0;
 	return (parce);
 }
 
@@ -69,7 +66,7 @@ t_info	*ft_init_info(int argc, char **argv)
 {
 	t_info	*info;
 	
-	info = (t_info *)malloc(sizeof(t_info *));
+	info = (t_info *)malloc(sizeof(t_info));
 	if (!info)
 		return (NULL);
 	if(ft_parce(argc, argv))
@@ -85,5 +82,6 @@ t_info	*ft_init_info(int argc, char **argv)
 		if (ft_check_info(*info, argc))
 			return (info);
 	}
+	free(info);
 	return (NULL);
 }
