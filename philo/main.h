@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:45:50 by mamounib          #+#    #+#             */
-/*   Updated: 2023/07/27 10:11:41 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:23:20 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,22 @@ typedef struct s_philo	t_philo;
 struct s_philo
 {
 	pthread_mutex_t	fork;
-	int				n_philo;
 	pthread_t		thread;
-	long			last_eat;
+	int				id_philo;
+	long long		last_eat;
 	int				times_eat;
+	t_info			*info;
 	t_philo			*next;
 };
 
-t_philo	*ft_init_philos(int nbr);
+t_philo	*ft_init_philos(int nbr, t_info *info);
 void	ft_add_philo(t_philo *philos, t_philo *philo);
-t_philo	*ft_new_philo(void);
 t_info	*ft_init_info(int argc, char **argv);
-void	get_info(t_info info);
-long long	ft_get_time(void);
 int	ft_parce(int argc, char **argv);
+long long	get_time(void);
+void ft_start(t_philo *philo, t_info *info);
+
+void	get_info(t_info info);
+void	get_philos(t_philo *philos);
+
 #endif

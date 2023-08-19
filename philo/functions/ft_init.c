@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 15:49:31 by mamounib          #+#    #+#             */
-/*   Updated: 2023/07/29 15:23:07 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/08/19 19:58:35 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,70 @@
 
 #include "../main.h"
 
-t_philo	*ft_new_philo()
+t_philo	*ft_new_philo(int id, t_info *info)
 {
 	t_philo	*philo;
 	
 	philo = (t_philo *)malloc(sizeof(t_philo *));
-	// pthread_mutex_init(&philo->fork, NULL);
+	philo->id_philo = id;
+	philo->info = info;
 	philo->next = NULL;
 	return (philo);
 }
 
-t_philo	*ft_init_philos(int nbr)
+t_philo	*ft_init_philos(int nbr, t_info *info)
 {
 	t_philo	*first;
 	t_philo	*current;
 	int		i;
 
 	first  = NULL;
-	i = nbr;
-	while (i)
+	i = 0;
+	while (i++ <= nbr)
 	{
 		puts("philo");
-		if( i == nbr)
+		if( i == 1)
 		{
-			current = ft_new_philo();
-			first = current;
-			// pthread_mutex_init(&current->fork, NULL);
+			first = ft_new_philo(i, info);
+			current = first;
 		}
 		else
 		{
-			current->next = ft_new_philo();
+			current->next = ft_new_philo(i, info);
 			current = current->next;
-			// pthread_mutex_init(&current->fork, NULL);	
 		}
-		i--;
 	}
 	current->next = first;
 	return (first);
+}
+long long	init_time(void)
+{
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000); 
+}
+void *ft_routine(void *philo)
+{
+	t_philo *a;
+
+	a = (t_philo *)philo;
+	printf("creat %d", a->id_philo);
+	return (NULL);
+}
+
+void ft_start(t_philo *philo, t_info *info)
+{
+	int	i;
+
+	i = info->nbr_philo;
+	info->start_time = init_time();
+	pthread_mutex_init(&info->msg, NULL);
+	while (--i > 1)
+	{
+		if (pthread_create(&philo->thread, NULL, ft_routine, philo) == -1)
+			puts("pthred craete failed");
+		pthread_detach(philo->thread);
+		philo = philo->next;
+	}
+	// while (1);
 }
