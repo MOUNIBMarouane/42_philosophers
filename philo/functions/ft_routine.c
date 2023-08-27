@@ -6,25 +6,13 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 22:52:42 by mamounib          #+#    #+#             */
-/*   Updated: 2023/08/14 16:28:43 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/08/26 16:16:18 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 #include <pthread.h>
 #include <stdio.h>
-
-//time to eat
-//time to die
-// esting 
-// sleeping
-// thinking 
-// times eating
-// and check the death 
-// 1 us
-// 1 ms 
-// usleep(time(ms) * 1000)
-// sleep 
 
 /**
  * @brief eat routine
@@ -36,20 +24,40 @@
  * 4 - init last meal 
  * 5 - 2 unlock
  */
-// void	ft_eat(t_philo *philo)
-// {
-// 	pthread_mutex_init(&philo->info->msg, NULL);
-// 	pthread_mutex_lock(philo->info);
-// 	printf("philo :%d take a fork");
-// 	printf("philo :%d take a fork");
-// 	printf("philo :%d is eating");
-// }
 
-// void	ft_routine(t_philo *philo)
-// {
-// 	while (1)
-// 	{
-// 		ft_eat(philo);
-// 	}
-	
-// }
+void	ft_msg(char *msg, t_philo *philo, int unlock)
+{
+	long long	time;
+
+	pthread_mutex_lock(&philo->info->msg);
+	time = init_time() - philo->info->start_time;
+	printf("%lld %d %s\n", time, philo->id_philo, msg);
+	if (unlock)
+		pthread_mutex_unlock(&philo->info->msg);
+}
+void	ft_eat(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->fork);
+	ft_msg("has taken a fork",philo, 1);
+	pthread_mutex_lock(&philo->next->fork);
+	ft_msg("has taken a fork",philo, 1);
+	philo->last_eat = init_time();
+	ft_msg("is eating", philo, 1);
+	usleep(philo->info->time_to_eat);
+	pthread_mutex_unlock(&philo->fork);
+	pthread_mutex_unlock(&philo->next->fork);
+	ft_msg("is sleeping", philo, 1);
+	usleep(philo->info->time_to_sleep);
+}
+
+void *ft_routine(void *philo)
+{
+	t_philo *phil;
+
+	phil = (t_philo *)philo;
+	while (1)
+	{
+		ft_eat(phil);
+	}
+	return ((void *)NULL);
+}

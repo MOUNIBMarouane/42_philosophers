@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:43:16 by mamounib          #+#    #+#             */
-/*   Updated: 2023/08/14 16:26:13 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/08/26 14:01:47 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ int main(int argc, char **argv)
 		{
 			printf("error: value invalide:");
 			return 0;
-		}	
-		get_info(*info);
+		}
 		philos = ft_init_philos(info->nbr_philo, info);
-		get_philos(philos);
+		pthread_mutex_init(&info->msg, NULL);
 		ft_start(philos, info);
 	}
 	else
