@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "../../../Documents/philos"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"time.h": "c"
+		}
+	}
+}
