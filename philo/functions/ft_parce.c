@@ -5,33 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 12:10:28 by mamounib          #+#    #+#             */
-/*   Updated: 2023/07/29 17:44:49 by mamounib         ###   ########.fr       */
+/*   Created: 2023/06/18 09:50:46 by mamounib          #+#    #+#             */
+/*   Updated: 2023/09/04 10:36:34 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @brief check if the number of argc is 5 or 6 then pace the arguments
- * 		  in the parece we need to check if all is a digits
- * 		  then check if the number of arguments is greater than 0
- *		  then set the values info
- * 
- * @param argc 
- * @param argv 
- * @param info 
- */
 #include "../main.h"
 
 static int	is_degit(char *arg)
 {
-	int i;
-	
-    i = 0;
+	int	i;
+
+	i = 0;
 	while (arg[i])
 	{
 		if (arg[i] < '0' || arg[i] > '9')
-            return (0);
-        i++;
+			return (0);
+		i++;
 	}
 	return (1);
 }
@@ -39,10 +29,11 @@ static int	is_degit(char *arg)
 
 int	ft_parce(int argc, char **argv)
 {
-	int parce;
+	int	parce;
 
 	parce = 0;
-	if (is_degit(argv[1]) && is_degit(argv[2]) && is_degit(argv[3]) && is_degit(argv[4]))
+	if (is_degit(argv[1]) && is_degit(argv[2]) && \
+	is_degit(argv[3]) && is_degit(argv[4]))
 		parce = 1;
 	if (argc == 6 && !is_degit(argv[5]))
 		parce = 0;
@@ -65,11 +56,11 @@ int	ft_check_info(t_info info, int argc)
 t_info	*ft_init_info(int argc, char **argv)
 {
 	t_info	*info;
-	
+
 	info = (t_info *)malloc(sizeof(t_info));
 	if (!info)
 		return (NULL);
-	if(ft_parce(argc, argv))
+	if (ft_parce(argc, argv))
 	{
 		info->nbr_philo = atoi(argv[1]);
 		info->time_to_die = atoi(argv[2]);
@@ -85,3 +76,4 @@ t_info	*ft_init_info(int argc, char **argv)
 	free(info);
 	return (NULL);
 }
+

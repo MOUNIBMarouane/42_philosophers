@@ -1,0 +1,17 @@
+parcing :
+	☐ args is digits
+	☐ 5 - 6 args
+creation :
+	☐ list of philos
+	☐ creat thread (each philo have a thread)
+routine :
+	☐ eating
+	☐ sleeping
+	☐ thinking
+
+functions :
+	☐ gettime() => curent time by ms
+	☐ print(philo, message) == print message <have a mutex for print>
+ 	☐ ft_sleep (philo , time to sleep) => print message and sleep this philo
+	☐ is_dead(philos) == check if the philos are dead <checking the last meal time>
+

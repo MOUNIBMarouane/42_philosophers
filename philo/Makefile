@@ -9,7 +9,7 @@ FILES= main.c \
 	   functions/ft_routine.c \
 	   functions/ft_parce.c \
 	   functions/ft_init.c \
-	   help.c
+	   functions/ft_utils.c \
 
 OBJECT = ${FILES:.c=.o}
 

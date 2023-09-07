@@ -6,19 +6,15 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:43:16 by mamounib          #+#    #+#             */
-/*   Updated: 2023/08/26 14:01:47 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:27:18 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	lk(){
-	system("leaks philo");
-}
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_info *info;
+	t_info	*info;
 	t_philo	*philos;
 
 	if (argc == 5 || argc == 6)
@@ -27,7 +23,7 @@ int main(int argc, char **argv)
 		if (!info)
 		{
 			printf("error: value invalide:");
-			return 0;
+			return (0);
 		}
 		philos = ft_init_philos(info->nbr_philo, info);
 		pthread_mutex_init(&info->msg, NULL);
@@ -35,5 +31,5 @@ int main(int argc, char **argv)
 	}
 	else
 		printf("error: syntax error: too many or less arguments");
-	return 0;
+	return (0);
 }
