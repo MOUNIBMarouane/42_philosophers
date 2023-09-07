@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:45:50 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/07 14:17:11 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:31:40 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,16 @@ typedef struct s_info
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				times_must_eat;
+	int				philo_done;
+	pthread_mutex_t	mphilo_done;
 }	t_info;
 
 typedef struct s_philo	t_philo;
 
 struct s_philo
 {
-	pthread_mutex_t	fork;
 	pthread_t		thread;
+	pthread_mutex_t	fork;
 	int				id_philo;
 	long long		last_eat;
 	pthread_mutex_t	mlast_eat;
@@ -56,6 +58,6 @@ void		*ft_routine(void *philo);
 void		ft_sleep(int time);
 void		get_info(t_info info);
 void		get_philos(t_philo *philos);
-void	ft_msg(char *msg, t_philo *philo, int unlock);
+void		ft_msg(char *msg, t_philo *philo, int unlock);
 
 #endif
