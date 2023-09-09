@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 23:13:39 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/08 15:39:59 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/09 16:03:01 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,28 @@ t_philo	*ft_init_philos(int nbr, t_info *info)
 	current->next = first;
 	return (first);
 }
+void	ft_free_philos(t_philo	*philos)
+{
+	t_philo	*philo;
+	t_philo	*current;
+
+	philo = philos;
+	current = philo;
+	pthread_mutex_lock(&philo->info->mphilo_done);
+	pthread_mutex_destroy(&philo->info->mphilo_done);
+	pthread_mutex_destroy(&philo->info->msg);
+	free(philos->info);
+	while (philo)
+	{
+		pthread_mutex_lock(&current->fork);
+		pthread_mutex_destroy(&current->fork);
+		pthread_mutex_lock(&current->mlast_eat);
+		pthread_mutex_destroy(&current->mlast_eat);
+		philo =  philo->next;
+		free(current);
+		current = philo;
+	}
+}
 
 long long	init_time(void)
 {
@@ -63,6 +85,7 @@ void	ft_start(t_philo *philo, t_info *info)
 {
 	int	i;
 	long long sum;
+
 	i = info->nbr_philo;
 	pthread_mutex_init(&info->msg, NULL);
 	info->start_time = get_time();

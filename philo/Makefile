@@ -2,7 +2,7 @@
 NAME = philo
 
 CC = cc -g
-CFLAGS = #-fsanitize=thread -g
+CFLAGS =# -fsanitize=thread -g
 RM = rm -f
 
 FILES= main.c \
