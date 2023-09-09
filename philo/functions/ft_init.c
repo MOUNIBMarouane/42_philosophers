@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 23:13:39 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/07 16:32:57 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/08 15:39:59 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ void	ft_start(t_philo *philo, t_info *info)
 	long long sum;
 	i = info->nbr_philo;
 	pthread_mutex_init(&info->msg, NULL);
+	info->start_time = get_time();
 	while (i-- >= 1)
 	{
+		philo->last_eat = get_time();
 		pthread_create(&philo->thread, NULL, ft_routine, philo);
 		philo = philo->next;
 	}
@@ -81,13 +83,13 @@ void	ft_start(t_philo *philo, t_info *info)
 	{
 		while (philo)
 		{
-			pthread_mutex_lock(&philo->mlast_eat);
-			sum = (get_time() - philo->last_eat);
-			pthread_mutex_unlock(&philo->mlast_eat);
 			pthread_mutex_lock(&info->mphilo_done);
 			if (info->philo_done == info->nbr_philo)
 				return ;
 			pthread_mutex_unlock(&info->mphilo_done);
+			pthread_mutex_lock(&philo->mlast_eat);
+			sum = (get_time() - philo->last_eat);
+			pthread_mutex_unlock(&philo->mlast_eat);
 			if (sum > info->time_to_die)
 			{
 				ft_msg("is dead", philo, 0);
