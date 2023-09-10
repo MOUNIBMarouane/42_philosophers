@@ -6,22 +6,16 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:43:16 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/09 16:07:08 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/09 21:27:31 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	leeks()
-{
-	system("leaks philo");
-}
-
 int	main(int argc, char **argv)
 {
 	t_info	*info;
 	t_philo	*philos;
-	atexit(leeks);
 
 	if (argc == 5 || argc == 6)
 	{
@@ -31,7 +25,6 @@ int	main(int argc, char **argv)
 			printf("error: value invalide:");
 			return (0);
 		}
-		
 		philos = ft_init_philos(info->nbr_philo, info);
 		pthread_mutex_init(&info->msg, NULL);
 		ft_start(philos, info);

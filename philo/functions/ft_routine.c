@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 22:52:42 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/08 15:27:04 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/10 02:24:42 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,10 @@
 void	ft_msg(char *msg, t_philo *philo, int unlock)
 {
 	long long	time;
-	int			times;
 
 	pthread_mutex_lock(&philo->info->msg);
 	time = init_time() - philo->info->start_time;
-	printf("%lld %d %s ", time, philo->id_philo, msg);
-	times = philo->info->times_must_eat;
-	// if (times >= 0)
-	// 	printf("%d ", philo->info->times_must_eat);
-	printf("\n");
+	printf("%lld %d %s \n", time, philo->id_philo, msg);
 	if (unlock)
 		pthread_mutex_unlock(&philo->info->msg);
 }
@@ -72,7 +67,7 @@ void	*ft_routine(void *philo)
 	while (1)
 	{
 		if (phil->times_eat == nmust_eat)
-			break;
+			break ;
 		ft_eat(phil);
 		ft_sleeping(phil);
 		ft_think(phil);

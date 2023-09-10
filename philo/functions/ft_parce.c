@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 09:50:46 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/07 16:33:24 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/10 02:39:15 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static int	is_degit(char *arg)
 	}
 	return (1);
 }
-
 
 int	ft_parce(int argc, char **argv)
 {
@@ -64,12 +63,12 @@ t_info	*ft_init_info(int argc, char **argv)
 	{
 		pthread_mutex_init(&info->mphilo_done, NULL);
 		info->philo_done = 0;
-		info->nbr_philo = atoi(argv[1]);
-		info->time_to_die = atoi(argv[2]);
-		info->time_to_eat = atoi(argv[3]);
-		info->time_to_sleep = atoi(argv[4]);
+		info->nbr_philo = ft_atoi(argv[1]);
+		info->time_to_die = ft_atoi(argv[2]);
+		info->time_to_eat = ft_atoi(argv[3]);
+		info->time_to_sleep = ft_atoi(argv[4]);
 		if (argc == 6)
-			info->times_must_eat = atoi(argv[5]);
+			info->times_must_eat = ft_atoi(argv[5]);
 		else
 			info->times_must_eat = -1;
 		if (ft_check_info(*info, argc))
@@ -78,4 +77,3 @@ t_info	*ft_init_info(int argc, char **argv)
 	free(info);
 	return (NULL);
 }
-

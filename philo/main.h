@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:45:50 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/07 16:31:40 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/10 02:33:01 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <time.h>
-
 
 typedef struct s_info
 {
@@ -59,5 +58,6 @@ void		ft_sleep(int time);
 void		get_info(t_info info);
 void		get_philos(t_philo *philos);
 void		ft_msg(char *msg, t_philo *philo, int unlock);
+int			ft_atoi(const char	*str);
 
 #endif

@@ -10,6 +10,7 @@ FILES= main.c \
 	   functions/ft_parce.c \
 	   functions/ft_init.c \
 	   functions/ft_utils.c \
+	   functions/ft_start.c \
 
 OBJECT = ${FILES:.c=.o}
 
