@@ -11,6 +11,7 @@ FILES= main.c \
 	   functions/ft_init.c \
 	   functions/ft_utils.c \
 	   functions/ft_start.c \
+	   functions/ft_kill.c \
 	   functions/helpers.c
 
 OBJECT = ${FILES:.c=.o}

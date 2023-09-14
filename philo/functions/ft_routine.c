@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 22:52:42 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/10 02:24:42 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/15 00:07:34 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	ft_msg(char *msg, t_philo *philo, int unlock)
 	long long	time;
 
 	pthread_mutex_lock(&philo->info->msg);
-	time = init_time() - philo->info->start_time;
-	printf("%lld %d %s \n", time, philo->id_philo, msg);
+	time = get_time() - philo->info->start_time;
+	printf("%lld %d %s\n", time, philo->id_philo, msg);
 	if (unlock)
 		pthread_mutex_unlock(&philo->info->msg);
 }

@@ -7,11 +7,14 @@ void	get_philos(t_philo *philos)
 
 	philo = philos;
 	end = philo->info->nbr_philo;
-	while (end)
-	{
-		if (philo->id_proc)
-			printf("id phiolo :%d - pid : %d \n", philo->id_philo, philo->id_proc);
-		philo = philo->next;
-		end --;
-	}
+	// if (philo->id_proc == 0)
+	// {
+	// 	printf("eqweq\n");
+	// // while (end)
+	// // {
+	// // 	printf("id phiolo :%d - pid : %d \n", philo->id_philo, philo->id_proc);
+	// // 	philo = philo->next;
+	// // 	end --;
+	// // }
+	// }
 }

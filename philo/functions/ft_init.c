@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 23:13:39 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/10 02:36:34 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/15 00:07:12 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,4 @@ void	ft_free_philos(t_philo	*philos)
 		free(current);
 		current = philo;
 	}
-}
-
-long long	init_time(void)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000); 
 }

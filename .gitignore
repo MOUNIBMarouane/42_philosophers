@@ -3,3 +3,6 @@ a.out
 philo/philo
 philo/*.o
 philo/*/*.o
+./vscode
+bonus/.o
+bonus/*/*.o

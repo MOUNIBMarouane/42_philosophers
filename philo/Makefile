@@ -2,8 +2,7 @@
 NAME = philo
 
 CC = cc -g
-CFLAGS =# -fsanitize=thread -g
-RM = rm -f
+CFLAGS = -Wall -Wextra -Werror 
 
 FILES= main.c \
 	   functions/ft_routine.c \

@@ -6,7 +6,7 @@
 /*   By: mamounib <mamounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:21:10 by mamounib          #+#    #+#             */
-/*   Updated: 2023/09/10 10:40:51 by mamounib         ###   ########.fr       */
+/*   Updated: 2023/09/14 03:41:11 by mamounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_info	*info;
 	t_philo	*philos;
+	sem_t	*forks;
 
 	if (argc == 5 || argc == 6)
 	{
@@ -26,10 +27,12 @@ int	main(int argc, char **argv)
 			return (0);
 		}
 		philos = ft_init_philos(info->nbr_philo, info);
-		ft_start(philos, info);
-		get_philos(philos);
+		sem_unlink("forks");
+		forks = sem_open("forks", O_CREAT, 0644, info->nbr_philo);
+		ft_start(philos, info, forks);
 	}
 	else
 		printf("error: syntax error: too many or less arguments");
+	ft_kill(philos);
 	return (0);
 }
